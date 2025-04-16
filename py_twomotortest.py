@@ -30,7 +30,7 @@ import select
 # Configuration parameters
 LEFT_MOTOR_INDEX = 0   # Left motor index (usually 0)
 RIGHT_MOTOR_INDEX = 1  # Right motor index (usually 1)
-VELOCITY = 1           # Fixed velocity value
+VELOCITY = 0.3           # Fixed velocity value
 AXIS_STATE_CLOSED_LOOP_CONTROL = 8  # ODrive closed loop control state
 
 # Global variables
