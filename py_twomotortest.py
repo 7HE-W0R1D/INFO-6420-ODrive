@@ -134,26 +134,26 @@ def handle_motor_control(key, left_axis, right_axis):
     elif key == '2':  # Left motor backward
         set_motor_velocity(left_axis, -VELOCITY)
     elif key == '3':  # Right motor forward
-        set_motor_velocity(right_axis, VELOCITY)
-    elif key == '4':  # Right motor backward
         set_motor_velocity(right_axis, -VELOCITY)
+    elif key == '4':  # Right motor backward
+        set_motor_velocity(right_axis, VELOCITY)
     elif key == 'w':  # Both motors forward
         set_motor_velocity(left_axis, VELOCITY)
-        set_motor_velocity(right_axis, VELOCITY)
+        set_motor_velocity(right_axis, -VELOCITY)
     elif key == 's':  # Both motors backward
         set_motor_velocity(left_axis, -VELOCITY)
-        set_motor_velocity(right_axis, -VELOCITY)
-    elif key == 'a':  # Right motor forward (turn left)
         set_motor_velocity(right_axis, VELOCITY)
+    elif key == 'a':  # Right motor forward (turn left)
+        set_motor_velocity(right_axis, -VELOCITY)
         set_motor_velocity(left_axis, 0)
     elif key == 'd':  # Left motor forward (turn right)
         set_motor_velocity(left_axis, VELOCITY)
         set_motor_velocity(right_axis, 0)
     elif key == 'q':  # Left motor backward, right motor forward (rotate left)
         set_motor_velocity(left_axis, -VELOCITY)
-        set_motor_velocity(right_axis, VELOCITY)
-    elif key == 'e':  # Right motor backward, left motor forward (rotate right)
         set_motor_velocity(right_axis, -VELOCITY)
+    elif key == 'e':  # Right motor backward, left motor forward (rotate right)
+        set_motor_velocity(right_axis, VELOCITY)
         set_motor_velocity(left_axis, VELOCITY)
     elif key == 'x':  # Stop all motors
         stop_all_motors(left_axis, right_axis)
