@@ -30,7 +30,7 @@ import select
 # Configuration parameters
 LEFT_MOTOR_INDEX = 0   # Left motor index (usually 0)
 RIGHT_MOTOR_INDEX = 1  # Right motor index (usually 1)
-VELOCITY = 0.3           # Fixed velocity value
+VELOCITY = 0.8         # Fixed velocity value
 AXIS_STATE_CLOSED_LOOP_CONTROL = 8  # ODrive closed loop control state
 
 # Global variables
@@ -95,7 +95,7 @@ def getch_non_blocking():
     try:
         tty.setraw(fd)
         # Short timeout for responsive detection
-        rlist, _, _ = select.select([sys.stdin], [], [], 0.5)
+        rlist, _, _ = select.select([sys.stdin], [], [], 0.25)
         if rlist:
             char = sys.stdin.read(1)
             if char == '\x03':  # Ctrl+C
