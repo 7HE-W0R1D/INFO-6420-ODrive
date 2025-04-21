@@ -71,6 +71,7 @@ def setup_motor(odrv, motor_index):
 def set_motor_velocity(axis, velocity):
     """Set the motor velocity."""
     try:
+        axis.requested_state = 8
         axis.controller.input_vel = velocity
     except Exception as e:
         print(f"Failed to set velocity: {str(e)}")
@@ -79,6 +80,8 @@ def stop_motor(axis):
     """Stop the motor."""
     try:
         set_motor_velocity(axis, 0)
+        time.sleep(0.05)  # Brief delay to allow velocity to reach zero
+        axis.requested_state = 1
     except Exception as e:
         print(f"Failed to stop motor: {str(e)}")
 
@@ -95,7 +98,7 @@ def getch_non_blocking():
     try:
         tty.setraw(fd)
         # Short timeout for responsive detection
-        rlist, _, _ = select.select([sys.stdin], [], [], 0.25)
+        rlist, _, _ = select.select([sys.stdin], [], [], 0.15)
         if rlist:
             char = sys.stdin.read(1)
             if char == '\x03':  # Ctrl+C
